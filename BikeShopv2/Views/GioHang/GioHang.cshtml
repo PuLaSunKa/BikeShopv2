@@ -1,0 +1,50 @@
+﻿@using BikeShopv2.Models
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table align="center" border="1">
+    <tr style="text-align:center; font-weight:bold">
+        <td>  Mã sản phẩm </td>
+        <td> Tên sản phẩm </td>
+        <td> Ảnh </td>
+        <td> Số lượng </td>
+        <td> Đơn giá </td>
+        <td> Thành tiền </td>
+        <td width="70"> </</td>
+        <td width="70"> </</td>
+        <td width="70"> </</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="text-align:center; font-weight:bold">
+            <td> @item.iIdsanpham </td>
+            <td> @item.sTensp</td>
+            <td><img src="~/HinhSanPham/@item.sAnh" width="50%"></td>
+            @using (Html.BeginForm("CapNhatGioHang", "GioHang", new { id = item.iIdsanpham }))
+            {
+
+                <td>  <input type="number" min="1" value="@item.iSoluong" name="txtSoluong" style="background-color:yellow" /> </td>
+
+                <td>@String.Format("{0:0,0}", item.dDongia) </td>
+                <td>@String.Format("{0:0,0}", item.dThanhtien) </td>
+                <td width="70"> <a href="@Url.Action("ChiTietSanPham", "BikeShop", new { id = item.iIdsanpham })"> Chi tiết </a></td>
+                <td width="70"> <a href="@Url.Action("XoaGioHang", "GioHang", new { id = item.iIdsanpham })"> Xóa  </a> </td>
+                <td width="70"> <input type="submit" value="Cập nhật" />  </td>
+            }
+        </tr>
+    }
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="5"> Số lượng sách: @ViewBag.TongSoLuong </td>
+        <td colspan="4"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.TongTien) VNĐ </td>
+    </tr>
+    <tr style="font-weight: bold; text-align:right; color:red">
+        <td colspan="9"><a href="@Url.Action("XoaTatCaGioHang","GioHang")"> Xóa tất cả giỏ hàng </a> </td>
+    </tr>
+    <tr style="font-weight: bold; text-align:center; color:red">
+        <td colspan="9"> <a href="@Url.Action("DatHang","GioHang")"> ĐẶT HÀNG  </a></td>
+    </tr>
+</table>
+

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BikeShopv2.Models.ChiTietDonHang>
+
+@{
+    ViewBag.Title = "ChiTietDonHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>CHI TIẾT ĐƠN HÀNG</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_SANPHAM)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SANPHAM.TenSP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SANPHAM.Anh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DonGia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <th>
+            @Html.DisplayFor(modelItem => item.ID_SANPHAM)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
+        </td>
+        <th>
+            <img width="200"src="~/HinhSanPham/@item.SANPHAM.Anh"/>
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DonGia)
+        </td>
+        <td>
+        </td>
+    </tr>
+}
+
+</table>

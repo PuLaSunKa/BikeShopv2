@@ -1,0 +1,35 @@
+﻿@model IEnumerable<BikeShopv2.Models.BRAND>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>QUẢN LÝ DANH SÁCH HÃNG SẢN PHẨM</h2>
+
+<p>
+    @Html.ActionLink("THÊM MỚI", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            TÊN BRAND
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand1)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID_BRAND }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID_BRAND }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID_BRAND })
+            </td>
+        </tr>
+    }
+
+</table>

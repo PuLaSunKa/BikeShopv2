@@ -1,0 +1,72 @@
+﻿@model IEnumerable<BikeShopv2.Models.DONDATHANG>
+
+@{
+    ViewBag.Title = "DonDatHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ĐƠN ĐẶT HÀNG</h2>
+<table class="table">
+    <tr>
+        <th>
+            MÃ ĐƠN HÀNG
+        </th>
+        <th>
+            HỌ TÊN KHÁCH HÀNG
+        </th>
+        <th>
+            SỐ ĐIỆN THOẠI
+        </th>
+        <th>
+            ĐỊA CHỈ
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DaThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID_DDH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DaThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayGiao)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "ChiTietDonHang", new { id = item.ID_DDH }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
